@@ -81,19 +81,13 @@ def get_omdb_genre(title: str, api_key: str):
        print(f"Error fetching data from OMDB for {title}: {e}")
        return []
 
-def fuzzywuzzy():
-
-
-
+ """Updates the genre(s) for a specific title in Titles table"""
+"""genres_data stores the output of genres variable"""
 def update_title_genre(genre_list: list, title:str, config: dict):
-   """Updates the genre(s) for a specific title in Titles table"""
-   """genres_data stores the output of genres variable"""
    try:
-      
       if not genre_list:
             print(f"No genres found for {title}, skipping update.")
             genre_value = None
-      
       cleaned_genre_list = clean_genre_data(genre_list)
 
       with psycopg2.connect(**config) as conn:
@@ -106,8 +100,7 @@ def update_title_genre(genre_list: list, title:str, config: dict):
                   WHERE title = %s;
                """, (genre_value, title))
                conn.commit()
-               print(f"Genres updated for {title}")
-                     
+               print(f"Genres updated for {title}")                  
    except Exception as e:
       print(f"Error updating genre(s) for {title}: {e}")
 
