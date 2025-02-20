@@ -81,7 +81,7 @@ def get_omdb_genre(title: str, api_key: str):
        print(f"Error fetching data from OMDB for {title}: {e}")
        return []
 
- """Updates the genre(s) for a specific title in Titles table"""
+"""Updates the genre(s) for a specific title in Titles table"""
 """genres_data stores the output of genres variable"""
 def update_title_genre(genre_list: list, title:str, config: dict):
    try:
